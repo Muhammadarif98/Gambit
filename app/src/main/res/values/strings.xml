@@ -1,4 +1,8 @@
 <resources>
     <string name="app_name">Gambit</string>
     <string name="ruble">%1$s ₽</string>
+    <string name="title">Title</string>
+    <string name="description">Description</string>
+    <string name="price">450</string>
+    <string name="korzina">В корзину</string>
 </resources>
