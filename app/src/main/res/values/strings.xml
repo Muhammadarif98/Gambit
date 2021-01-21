@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">Gambit</string>
+    <string name="ruble">%1$s ₽</string>
+</resources>
