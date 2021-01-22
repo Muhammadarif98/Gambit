@@ -32,13 +32,25 @@ public class MyAdapter extends RecyclerView.Adapter<MyHolder> {
         holder.bind(models.get(position), MyAdapter.this);
     }
 
-    public void updateValue(String id, boolean isChecked) {
-        mPrefs.edit().putBoolean(id, isChecked).apply();
+    public void updateValue(MyHolder holder ,int newValue,String id){
+        mPrefs.edit().putInt(id, newValue).apply();
+        holder.mColichestvo.setText(String.valueOf(newValue));
+        if (holder.mColichestvo.getText().toString().equals("0")){
+            holder.mButKorz.setVisibility(View.VISIBLE);
+            holder.mButs.setVisibility(View.INVISIBLE);
+        }
+    }
+    public int getValue(String id){
+        return mPrefs.getInt(id, 0);
     }
 
-    public boolean getValue(String id) {
-        return mPrefs.getBoolean(id, false);
-    }
+//    public void updateValue(String id, boolean isChecked) {
+//        mPrefs.edit().putBoolean(id, isChecked).apply();
+//    }
+//
+//    public boolean getValue(String id) {
+//        return mPrefs.getBoolean(id, false);
+//    }
 
     @Override
     public int getItemCount() {

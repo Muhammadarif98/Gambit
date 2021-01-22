@@ -16,7 +16,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center_vertical"
-
+        android:paddingRight="16dp"
+        android:paddingTop="16dp"
+        android:paddingLeft="16dp"
         android:background="@color/white">
 
         <ImageView
@@ -86,7 +88,7 @@
                 android:layout_below="@+id/titlet"
                 android:layout_marginLeft="10dp"
                 android:layout_weight="1"
-                android:visibility="visible"
+                android:visibility="invisible"
                 android:background="@drawable/rectangle1"
                 android:gravity="center"
                 android:orientation="horizontal">
@@ -122,7 +124,7 @@
 
             <LinearLayout
                 android:id="@+id/buts"
-                android:visibility="invisible"
+                android:visibility="visible"
                 android:layout_weight="1"
                 android:layout_marginLeft="10dp"
                 android:layout_width="wrap_content"
@@ -132,7 +134,7 @@
                     android:id="@+id/butminus"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginRight="14dp"
+                    android:layout_marginRight="10dp"
                     android:layout_toRightOf="@+id/minus"
                     android:layout_weight="1"
                     android:background="@drawable/rectangle2"
@@ -147,10 +149,13 @@
                 </LinearLayout>
 
                 <TextView
+                    android:id="@+id/colichestvo"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:text="0"
+                    android:gravity="center"
+                    android:layout_weight="2"
                     android:textColor="@color/black"
                     android:textSize="14sp" />
 
@@ -159,7 +164,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/lpp"
-                    android:layout_marginLeft="14dp"
+                    android:layout_marginLeft="10dp"
                     android:layout_weight="1"
                     android:background="@drawable/rectangle2"
                     android:gravity="center"
