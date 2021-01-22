@@ -15,16 +15,20 @@ import com.squareup.picasso.Picasso;
 public class MyHolder extends RecyclerView.ViewHolder {
 
     ImageView mImageView;
-    CheckBox mFavorite;
+    CheckBox v1,v2,v3,v4,v5;
     TextView mTitle,mBrand,mPrice;
     TextView mColichestvo;
     LinearLayout mPlus,mMinus,mButKorz,mButs;
-
+    Boolean isChecked = false;
     public MyHolder(@NonNull View itemView) {
         super(itemView);
 
         this.mImageView = itemView.findViewById(R.id.image_2);
-        //this.mFavorite = itemView.findViewById(R.id.favorite);
+        this.v1 = itemView.findViewById(R.id.v1);
+        this.v2 = itemView.findViewById(R.id.v2);
+        this.v3 = itemView.findViewById(R.id.v3);
+        this.v4 = itemView.findViewById(R.id.v4);
+        this.v5 = itemView.findViewById(R.id.v5);
         this.mTitle = itemView.findViewById(R.id.titlet);
         this.mBrand = itemView.findViewById(R.id.brand);
         this.mPrice = itemView.findViewById(R.id.price);
@@ -73,12 +77,5 @@ public class MyHolder extends RecyclerView.ViewHolder {
 
             }
         });
-
-
-//        mFavorite.setChecked(adapter.getValue(model.getId()));
-//        mFavorite.setOnCheckedChangeListener((buttonView, isChecked) -> {
-//            adapter.updateValue(id, isChecked);
-//        });
-
     }
 }

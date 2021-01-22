@@ -44,6 +44,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyHolder> {
         return mPrefs.getInt(id, 0);
     }
 
+
 //    public void updateValue(String id, boolean isChecked) {
 //        mPrefs.edit().putBoolean(id, isChecked).apply();
 //    }
