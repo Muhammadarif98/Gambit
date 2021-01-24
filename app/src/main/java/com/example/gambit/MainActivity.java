@@ -1,17 +1,17 @@
 package com.example.gambit;
 
-import androidx.appcompat.app.ActionBar;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.util.Log;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.recyclerview.widget.ItemTouchHelper;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,7 +25,7 @@ public class MainActivity extends AppCompatActivity {
     private RecyclerView mRecyclerView;
     private MyAdapter myAdapter;
     SharedPreferences mPrefs ;
-    private ArrayList<Foods> clothes =new ArrayList<>();
+    private ArrayList<Foods> foods =new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,8 +49,8 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void onResponse(Call<List<Foods>> call, Response<List<Foods>> response) {
                         if (response.isSuccessful() && response.body()!=null){
-                            clothes = new ArrayList<>(response.body());
-                            myAdapter=new MyAdapter(mPrefs,clothes);
+                            foods = new ArrayList<>(response.body());
+                            myAdapter=new MyAdapter(mPrefs,foods);
                             mRecyclerView.setAdapter(myAdapter);
 
                         }
@@ -63,6 +63,46 @@ public class MainActivity extends AppCompatActivity {
                         Toast.makeText(MainActivity.this,"Упс! Что то пошло не так", Toast.LENGTH_SHORT).show();
                     }
                 });
+        new ItemTouchHelper(new ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT) {
+            @Override
+            public boolean onMove(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, @NonNull RecyclerView.ViewHolder target) {
+                return false;
+            }
+
+            @Override
+            public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
+
+                // when user swipe thr recyclerview item to right remove item from avorite list
+                if (direction == ItemTouchHelper.RIGHT) {
+                    myAdapter.addToFav(viewHolder.getAdapterPosition(), false);
+                }
+                // when user swipe thr recyclerview item to left remove item from avorite list
+                else if (direction == ItemTouchHelper.LEFT) {
+                    myAdapter.addToFav(viewHolder.getAdapterPosition(), true);
+                }
+
+            }
+        }).attachToRecyclerView(mRecyclerView);
+
+//        myAdapter = new MyAdapter(mPrefs,foods);
+//        swipeController = new SwipeController(new SwipeControllerActions() {
+//            @Override
+//            public void onRightClicked(int position) {
+//                myAdapter.mFoods.remove(position);
+//                myAdapter.notifyItemRemoved(position);
+//                myAdapter.notifyItemRangeChanged(position, myAdapter.getItemCount());
+//            }
+//        });
+//
+//        ItemTouchHelper itemTouchhelper = new ItemTouchHelper(swipeController);
+//        itemTouchhelper.attachToRecyclerView(mRecyclerView);
+//
+//        mRecyclerView.addItemDecoration(new RecyclerView.ItemDecoration() {
+//            @Override
+//            public void onDraw(Canvas c, RecyclerView parent, RecyclerView.State state) {
+//                swipeController.onDraw(c);
+//            }
+//        });
 
     }
 }

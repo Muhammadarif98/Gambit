@@ -12,11 +12,11 @@ import java.util.ArrayList;
 
 public class MyAdapter extends RecyclerView.Adapter<MyHolder> {
 
-    ArrayList<Foods> models;
+    ArrayList<Foods> mFoods;
     SharedPreferences mPrefs;
 
-    public MyAdapter(SharedPreferences mPrefs, ArrayList<Foods> models) {
-        this.models = models;
+    public MyAdapter(SharedPreferences mPrefs, ArrayList<Foods> foods) {
+        this.mFoods = foods;
         this.mPrefs = mPrefs;
     }
 
@@ -29,7 +29,9 @@ public class MyAdapter extends RecyclerView.Adapter<MyHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull MyHolder holder, int position) {
-        holder.bind(models.get(position), MyAdapter.this);
+        holder.bind(mFoods.get(position), MyAdapter.this);
+        holder.ivFavImage.setImageResource(mFoods.get(position).isFavorite()
+                ? R.drawable.ic_favfull : R.drawable.ic_fav);
     }
 
     public void updateValue(MyHolder holder ,int newValue,String id){
@@ -55,6 +57,11 @@ public class MyAdapter extends RecyclerView.Adapter<MyHolder> {
 
     @Override
     public int getItemCount() {
-        return models.size();
+        return mFoods.size();
+    }
+
+    public void addToFav(int position, boolean flag) {
+        mFoods.get(position).setFavorite(flag);
+        notifyDataSetChanged();
     }
 }

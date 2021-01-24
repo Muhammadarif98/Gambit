@@ -7,7 +7,7 @@
     android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
 
     <ImageView
-        android:layout_width="100dp"
+        android:layout_width="94dp"
         android:layout_height="28dp"
         android:src="@drawable/gambit_text"
         android:layout_gravity="center">

@@ -4,6 +4,7 @@ import com.google.gson.annotations.SerializedName;
 
 public class Foods {
 
+
     @SerializedName("id")
     private String id;
     @SerializedName("name")
@@ -14,6 +15,25 @@ public class Foods {
     private String image;
     @SerializedName("description")
     private String description;
+
+
+
+    @SerializedName("isFavorite")
+    private boolean isFavorite;
+
+    public Foods(boolean isFavorite) {
+        this.isFavorite = isFavorite;
+    }
+
+    public boolean isFavorite() {
+        return isFavorite;
+    }
+
+    public void setFavorite(boolean favorite) {
+        isFavorite = favorite;
+    }
+
+
 
 
     public String getId() {
@@ -47,6 +67,7 @@ public class Foods {
     public void setImage(String image) {
         this.image = image;
     }
+
     public String getDescription() {
         return description;
     }
@@ -54,6 +75,13 @@ public class Foods {
     public void setDescription(String description) {
         this.description = description;
     }
+
+    public Boolean getIsFavorite() {
+        return isFavorite;
+    }
+
+
+
 
 }
 

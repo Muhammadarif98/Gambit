@@ -1,183 +1,198 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/cardView"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:background="@drawable/backrow"
-    app:cardCornerRadius="0dp"
-    app:cardElevation="0dp"
-    app:cardUseCompatPadding="true"
-    app:contentPaddingBottom="0dp">
+    xmlns:card_view="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
 
-
-    <RelativeLayout
-        android:id="@+id/frame_19"
-        android:layout_width="match_parent"
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardView"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_vertical"
-        android:paddingRight="16dp"
-        android:paddingTop="16dp"
-        android:paddingLeft="16dp"
-        android:background="@color/white">
+        android:background="@drawable/backrow"
+        app:cardCornerRadius="0dp"
+        app:cardElevation="0dp"
+        app:cardUseCompatPadding="true"
+        app:contentPaddingBottom="0dp">
 
-        <ImageView
-            android:id="@+id/image_2"
-            android:layout_width="128dp"
-            android:layout_height="128dp"
-            android:layout_alignParentTop="true"
-            android:layout_marginStart="-3dp"
-            android:layout_marginLeft="-3dp"
-            android:layout_marginTop="-2dp"
-            android:src="@mipmap/ic_launcher">
 
-        </ImageView>
-
-        <TextView
-            android:id="@+id/brand"
+        <RelativeLayout
+            android:id="@+id/frame_19"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="24dp"
-            android:layout_toRightOf="@+id/image_2"
-            android:text="@string/title"
-            android:textColor="@color/black" />
+            android:layout_gravity="center_vertical"
+            android:background="@color/white"
+            android:paddingLeft="16dp"
+            android:paddingTop="16dp"
+            android:paddingRight="16dp">
 
-        <TextView
-            android:id="@+id/titlet"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/brand"
-            android:layout_marginLeft="24dp"
-            android:layout_marginTop="8dp"
-            android:layout_toRightOf="@+id/image_2"
-            android:text="@string/description"
-            android:textColor="@color/black" />
+            <ImageView
+                android:id="@+id/image_2"
+                android:layout_width="128dp"
+                android:layout_height="128dp"
+                android:layout_alignParentTop="true"
+                android:layout_marginStart="-3dp"
+                android:layout_marginLeft="-3dp"
+                android:layout_marginTop="-2dp"
+                android:src="@mipmap/ic_launcher">
 
-        <LinearLayout
-            android:id="@+id/lpp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/titlet"
-            android:layout_marginLeft="24dp"
-            android:layout_marginTop="32dp"
-            android:layout_toRightOf="@+id/image_2">
+            </ImageView>
 
-            <LinearLayout
-                android:id="@+id/lpr"
-                android:layout_width="wrap_content"
+            <TextView
+                android:id="@+id/brand"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="0.5"
-                android:background="@drawable/rectangle"
-                android:gravity="center"
-                android:orientation="horizontal">
+                android:layout_marginLeft="24dp"
+                android:layout_toRightOf="@+id/image_2"
+                android:text="@string/title"
+                android:textColor="@color/black" />
 
-                <TextView
-                    android:id="@+id/price"
-                    android:layout_width="63dp"
-                    android:layout_height="32dp"
-                    android:gravity="center"
-                    android:text="@string/price"
-                    android:textColor="@color/black"
-                    android:textStyle="bold" />
-            </LinearLayout>
+            <TextView
+                android:id="@+id/titlet"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/brand"
+                android:layout_marginLeft="24dp"
+                android:layout_marginTop="8dp"
+                android:layout_toRightOf="@+id/image_2"
+                android:text="@string/description"
+                android:textColor="@color/black" />
 
             <LinearLayout
-                android:id="@+id/butkorz"
-                android:layout_width="wrap_content"
+                android:id="@+id/lpp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/titlet"
-                android:layout_marginLeft="10dp"
-                android:layout_weight="1"
-                android:visibility="invisible"
-                android:background="@drawable/rectangle1"
-                android:gravity="center"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:id="@+id/korzina"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:text="@string/korzina"
-                    android:textColor="@color/white"
-                    android:textStyle="bold" />
-            </LinearLayout>
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/lpp2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/titlet"
-            android:layout_marginLeft="24dp"
-            android:layout_marginTop="32dp"
-            android:layout_toRightOf="@+id/image_2">
-            <LinearLayout
-                android:id="@+id/fd"
-                android:layout_width="63dp"
-                android:layout_height="32dp"
-                android:layout_weight="0.5"
-                android:gravity="center"
-                android:orientation="horizontal">
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/buts"
-                android:visibility="visible"
-                android:layout_weight="1"
-                android:layout_marginLeft="10dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
+                android:layout_marginLeft="24dp"
+                android:layout_marginTop="32dp"
+                android:layout_toRightOf="@+id/image_2">
 
                 <LinearLayout
-                    android:id="@+id/butminus"
+                    android:id="@+id/lpr"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginRight="10dp"
-                    android:layout_toRightOf="@+id/minus"
-                    android:layout_weight="1"
-                    android:background="@drawable/rectangle2"
+                    android:layout_weight="0.5"
+                    android:background="@drawable/rectangle"
                     android:gravity="center"
                     android:orientation="horizontal">
 
-                    <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                    <TextView
+                        android:id="@+id/price"
+                        android:layout_width="63dp"
+                        android:layout_height="32dp"
                         android:gravity="center"
-                        android:src="@drawable/ic_minus" />
+                        android:text="@string/price"
+                        android:textColor="@color/black"
+                        android:textStyle="bold" />
                 </LinearLayout>
 
-                <TextView
-                    android:id="@+id/colichestvo"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:text="0"
-                    android:gravity="center"
-                    android:layout_weight="2"
-                    android:textColor="@color/black"
-                    android:textSize="14sp" />
-
                 <LinearLayout
-                    android:id="@+id/butplus"
+                    android:id="@+id/butkorz"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/lpp"
+                    android:layout_below="@+id/titlet"
                     android:layout_marginLeft="10dp"
                     android:layout_weight="1"
-                    android:background="@drawable/rectangle2"
+                    android:background="@drawable/rectangle1"
                     android:gravity="center"
-                    android:orientation="horizontal">
+                    android:orientation="horizontal"
+                    android:visibility="invisible">
 
-                    <ImageView
+                    <TextView
+                        android:id="@+id/korzina"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:gravity="center"
-                        android:src="@drawable/ic_plus" />
+                        android:text="@string/korzina"
+                        android:textColor="@color/white"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/lpp2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/titlet"
+                android:layout_marginLeft="24dp"
+                android:layout_marginTop="32dp"
+                android:layout_toRightOf="@+id/image_2">
+
+                <LinearLayout
+                    android:id="@+id/fd"
+                    android:layout_width="63dp"
+                    android:layout_height="32dp"
+                    android:layout_weight="0.5"
+                    android:gravity="center"
+                    android:orientation="horizontal"></LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/buts"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_weight="1"
+                    android:visibility="visible">
+
+                    <LinearLayout
+                        android:id="@+id/butminus"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="10dp"
+                        android:layout_toRightOf="@+id/minus"
+                        android:layout_weight="1"
+                        android:background="@drawable/rectangle2"
+                        android:gravity="center"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:src="@drawable/ic_minus" />
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/colichestvo"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_weight="2"
+                        android:gravity="center"
+                        android:text="0"
+                        android:textColor="@color/black"
+                        android:textSize="14sp" />
+
+                    <LinearLayout
+                        android:id="@+id/butplus"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/lpp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/rectangle2"
+                        android:gravity="center"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:src="@drawable/ic_plus" />
+                    </LinearLayout>
                 </LinearLayout>
             </LinearLayout>
-        </LinearLayout>
-    </RelativeLayout>
 
-</androidx.cardview.widget.CardView>
+        </RelativeLayout>
+        <ImageView
+            android:id="@+id/heart"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:padding="8dp"
+            android:layout_below="@id/frame_19"
+            card_view:srcCompat="@drawable/ic_favfull" />
+    </androidx.cardview.widget.CardView>
+
+
+</RelativeLayout>
