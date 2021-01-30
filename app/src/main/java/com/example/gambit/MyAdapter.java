@@ -46,6 +46,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyHolder> {
         viewHolder.swipeLayout.setOnSwipeListener(new SwipeLayout.OnSwipeListener() {
             @Override
             public void onBeginSwipe(SwipeLayout swipeLayout, boolean moveToRight) {
+
             }
 
             @Override
@@ -59,6 +60,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyHolder> {
 
             @Override
             public void onRightStickyEdge(SwipeLayout swipeLayout, boolean moveToRight) {
+                swipeLayout.isRightSwipeEnabled();
             }
         });
 

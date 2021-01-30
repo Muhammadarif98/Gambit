@@ -186,23 +186,21 @@
         </RelativeLayout>
     <androidx.appcompat.widget.LinearLayoutCompat
         android:id="@+id/right_view"
-        android:layout_width="61dp"
-        android:layout_height="145dp"
+        android:layout_width="60dp"
+        android:layout_height="-1dp"
         android:background="#f5f5f5"
         android:orientation="vertical"
         android:gravity="center"
         app:gravity="right"
         app:bring_to_clamp="100dp"
         app:clamp="self"
-        app:sticky="none">
+        app:sticky="60dp">
 
         <CheckBox
             android:id="@+id/heart"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:gravity="center"
-            android:layout_margin="8dp"
             android:button="@drawable/custome_checkbox"
             android:textAppearance="?android:attr/textAppearanceLarge" />
     </androidx.appcompat.widget.LinearLayoutCompat>
