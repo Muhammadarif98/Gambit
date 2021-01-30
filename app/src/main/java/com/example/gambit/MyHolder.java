@@ -8,19 +8,23 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.widget.LinearLayoutCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.squareup.picasso.Picasso;
 
+import ru.rambler.libs.swipe_layout.SwipeLayout;
+
 
 public class MyHolder extends RecyclerView.ViewHolder {
-
-    ImageView mImageView,ivFavImage;
-    CheckBox v1,v2,v3,v4,v5;
+    SwipeLayout swipeLayout;
+    ImageView mImageView;
+    CheckBox mFavorite;
     TextView mTitle,mBrand,mPrice;
     TextView mColichestvo;
     LinearLayout mPlus,mMinus,mButKorz,mButs;
-    Boolean isChecked = false;
+    LinearLayoutCompat rightView;
+
     public MyHolder(@NonNull View itemView) {
         super(itemView);
 
@@ -33,8 +37,9 @@ public class MyHolder extends RecyclerView.ViewHolder {
         this.mMinus = itemView.findViewById(R.id.butminus);
         this.mButKorz = itemView.findViewById(R.id.butkorz);
         this.mButs = itemView.findViewById(R.id.buts);
-
-        this.ivFavImage = itemView.findViewById(R.id.heart);
+        this.swipeLayout = itemView.findViewById(R.id.swipe);
+        this.mFavorite = itemView.findViewById(R.id.heart);
+        this.rightView = itemView.findViewById(R.id.right_view);
 
 
     }
@@ -48,6 +53,11 @@ public class MyHolder extends RecyclerView.ViewHolder {
         mPrice.setText(mPrice.getContext().getString(R.string.ruble, food.getPrice()));
         String id = food.getId();
 
+//        mFavorite.setChecked(adapter.getVal(food.getId()));
+//        mFavorite.setOnCheckedChangeListener((buttonView, isChecked) -> {
+//            adapter.updateVal(id,isChecked);
+//        });
+
         adapter.updateValue(MyHolder.this,adapter.getValue(id),id);
 
         mButKorz.setOnClickListener(new View.OnClickListener() {
@@ -59,17 +69,17 @@ public class MyHolder extends RecyclerView.ViewHolder {
             }
         });
 
-        ivFavImage.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (adapter.mFoods.get(getAdapterPosition()).isFavorite()) {
-                    adapter.mFoods.get(getAdapterPosition()).setFavorite(false);
-                } else {
-                    adapter.mFoods.get(getAdapterPosition()).setFavorite(true);
-                }
-                adapter.notifyDataSetChanged();
-            }
-        });
+//        ivFavImage.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                if (adapter.mFoods.get(getAdapterPosition()).isFavorite()) {
+//                    adapter.mFoods.get(getAdapterPosition()).setFavorite(false);
+//                } else {
+//                    adapter.mFoods.get(getAdapterPosition()).setFavorite(true);
+//                }
+//                adapter.notifyDataSetChanged();
+//            }
+//        });
 
         mPlus.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -90,5 +100,5 @@ public class MyHolder extends RecyclerView.ViewHolder {
 
             }
         });
-    }
+  }
 }

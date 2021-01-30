@@ -6,12 +6,12 @@ import android.preference.PreferenceManager;
 import android.util.Log;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
+
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,7 +21,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class MainActivity extends AppCompatActivity {
-
+   // private SwipeLayout mSwipeLayout;
     private RecyclerView mRecyclerView;
     private MyAdapter myAdapter;
     SharedPreferences mPrefs ;
@@ -35,6 +35,18 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        //mSwipeLayout = findViewById(R.id.swipe);
+
+
+//          mSwipeLayout.setShowMode(SwipeLayout.ShowMode.PullOut);
+//          mSwipeLayout.addDrag(SwipeLayout.DragEdge.Left,mSwipeLayout.findViewById(R.id.linear_sol));
+////
+//        mSwipeLayout.findViewById(R.id.heart).setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                mHolder.ivFavImage.setImageResource(R.drawable.ic_favfull);
+//            }
+//        });
 
         mRecyclerView = findViewById(R.id.recyclerViews);
         mRecyclerView.setHasFixedSize(true);
@@ -63,46 +75,30 @@ public class MainActivity extends AppCompatActivity {
                         Toast.makeText(MainActivity.this,"Упс! Что то пошло не так", Toast.LENGTH_SHORT).show();
                     }
                 });
-        new ItemTouchHelper(new ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT) {
-            @Override
-            public boolean onMove(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, @NonNull RecyclerView.ViewHolder target) {
-                return false;
-            }
 
-            @Override
-            public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
-
-                // when user swipe thr recyclerview item to right remove item from avorite list
-                if (direction == ItemTouchHelper.RIGHT) {
-                    myAdapter.addToFav(viewHolder.getAdapterPosition(), false);
-                }
-                // when user swipe thr recyclerview item to left remove item from avorite list
-                else if (direction == ItemTouchHelper.LEFT) {
-                    myAdapter.addToFav(viewHolder.getAdapterPosition(), true);
-                }
-
-            }
-        }).attachToRecyclerView(mRecyclerView);
-
-//        myAdapter = new MyAdapter(mPrefs,foods);
-//        swipeController = new SwipeController(new SwipeControllerActions() {
+//        new ItemTouchHelper(new ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT ) {
 //            @Override
-//            public void onRightClicked(int position) {
-//                myAdapter.mFoods.remove(position);
-//                myAdapter.notifyItemRemoved(position);
-//                myAdapter.notifyItemRangeChanged(position, myAdapter.getItemCount());
+//            public boolean onMove(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, @NonNull RecyclerView.ViewHolder target) {
+//                return false;
 //            }
-//        });
 //
-//        ItemTouchHelper itemTouchhelper = new ItemTouchHelper(swipeController);
-//        itemTouchhelper.attachToRecyclerView(mRecyclerView);
-//
-//        mRecyclerView.addItemDecoration(new RecyclerView.ItemDecoration() {
 //            @Override
-//            public void onDraw(Canvas c, RecyclerView parent, RecyclerView.State state) {
-//                swipeController.onDraw(c);
+//            public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
+//
+//                // when user swipe thr recyclerview item to right remove item from avorite list
+//                if (direction == ItemTouchHelper.RIGHT) {
+//                    myAdapter.addToFav(viewHolder.getAdapterPosition(), false);
+//                }
+//                // when user swipe thr recyclerview item to left remove item from avorite list
+//                else if (direction == ItemTouchHelper.LEFT) {
+//                    myAdapter.addToFav(viewHolder.getAdapterPosition(), true);
+//                }
+//
 //            }
-//        });
+//        }).attachToRecyclerView(mRecyclerView);
+
+
+
 
     }
 }
