@@ -31,7 +31,8 @@
     android:layout_height="wrap_content"
     android:background="@drawable/rectangle3"
     android:layout_alignParentBottom="true"
-    app:itemIconSize="22dp"
+    app:labelVisibilityMode="unlabeled"
+    app:itemIconSize="20dp"
     app:itemIconTint="@color/bnv_tab_item_foreground"
     app:menu="@menu/bottom_navigation"
     >
