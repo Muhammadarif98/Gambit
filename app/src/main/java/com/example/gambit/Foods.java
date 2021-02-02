@@ -15,21 +15,15 @@ public class Foods {
     private String image;
     @SerializedName("description")
     private String description;
-
-
-
     @SerializedName("isFavorite")
-    private boolean isFavorite;
+    private Boolean isFavorite;
 
-    public Foods(boolean isFavorite) {
-        this.isFavorite = isFavorite;
-    }
 
-    public boolean isFavorite() {
+    public Boolean getIsFavorite() {
         return isFavorite;
     }
 
-    public void setFavorite(boolean favorite) {
+    public void setFavorite(Boolean favorite) {
         isFavorite = favorite;
     }
 
@@ -75,13 +69,6 @@ public class Foods {
     public void setDescription(String description) {
         this.description = description;
     }
-
-    public Boolean getIsFavorite() {
-        return isFavorite;
-    }
-
-
-
 
 }
 

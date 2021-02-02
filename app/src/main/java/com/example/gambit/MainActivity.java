@@ -24,7 +24,7 @@ public class MainActivity extends AppCompatActivity {
    // private SwipeLayout mSwipeLayout;
     private RecyclerView mRecyclerView;
     private MyAdapter myAdapter;
-    SharedPreferences mPrefs ;
+    SharedPreferences mPrefs,mePrefs ;
     private ArrayList<Foods> foods =new ArrayList<>();
 
     @Override
@@ -35,18 +35,6 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        //mSwipeLayout = findViewById(R.id.swipe);
-
-
-//          mSwipeLayout.setShowMode(SwipeLayout.ShowMode.PullOut);
-//          mSwipeLayout.addDrag(SwipeLayout.DragEdge.Left,mSwipeLayout.findViewById(R.id.linear_sol));
-////
-//        mSwipeLayout.findViewById(R.id.heart).setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                mHolder.ivFavImage.setImageResource(R.drawable.ic_favfull);
-//            }
-//        });
 
         mRecyclerView = findViewById(R.id.recyclerViews);
         mRecyclerView.setHasFixedSize(true);
@@ -62,7 +50,7 @@ public class MainActivity extends AppCompatActivity {
                     public void onResponse(Call<List<Foods>> call, Response<List<Foods>> response) {
                         if (response.isSuccessful() && response.body()!=null){
                             foods = new ArrayList<>(response.body());
-                            myAdapter=new MyAdapter(mPrefs,foods);
+                            myAdapter=new MyAdapter(mPrefs,mePrefs,foods);
                             mRecyclerView.setAdapter(myAdapter);
 
                         }

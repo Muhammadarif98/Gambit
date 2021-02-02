@@ -24,6 +24,7 @@ public class MyHolder extends RecyclerView.ViewHolder {
     TextView mColichestvo;
     LinearLayout mPlus,mMinus,mButKorz,mButs;
     LinearLayoutCompat rightView;
+    Boolean isFavorite;
 
     public MyHolder(@NonNull View itemView) {
         super(itemView);
@@ -51,40 +52,28 @@ public class MyHolder extends RecyclerView.ViewHolder {
         mTitle.setText(food.getDescription());
         Picasso.get().load(food.getImage()).fit().into(mImageView);
         mPrice.setText(mPrice.getContext().getString(R.string.ruble, food.getPrice()));
+        isFavorite = false;
         String id = food.getId();
 
-//        mFavorite.setChecked(adapter.getVal(food.getId()));
-//        mFavorite.setOnCheckedChangeListener((buttonView, isChecked) -> {
-//            adapter.updateVal(id,isChecked);
-//        });
+//            mFavorite.setChecked(adapter.getValue(food.getId()));
+//            mFavorite.setOnCheckedChangeListener((buttonView, isChecked) -> {
+//                adapter.updateValue(id, isChecked);
+//            });
 
-        adapter.updateValue(MyHolder.this,adapter.getValue(id),id);
 
+        adapter.updateValue(id, MyHolder.this, adapter.getValue(id));
         mButKorz.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 mButs.setVisibility(View.VISIBLE);
                 mButKorz.setVisibility(View.INVISIBLE);
-                adapter.updateValue(MyHolder.this,adapter.getValue(id) + 1,id);
+                adapter.updateValue(id,MyHolder.this,adapter.getValue(id) + 1);
             }
         });
-
-//        ivFavImage.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                if (adapter.mFoods.get(getAdapterPosition()).isFavorite()) {
-//                    adapter.mFoods.get(getAdapterPosition()).setFavorite(false);
-//                } else {
-//                    adapter.mFoods.get(getAdapterPosition()).setFavorite(true);
-//                }
-//                adapter.notifyDataSetChanged();
-//            }
-//        });
-
         mPlus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                adapter.updateValue(MyHolder.this,adapter.getValue(id) + 1,id);
+                adapter.updateValue(id,MyHolder.this,adapter.getValue(id) + 1);
             }
         });
         mMinus.setOnClickListener(new View.OnClickListener() {
@@ -93,9 +82,9 @@ public class MyHolder extends RecyclerView.ViewHolder {
                 if (mColichestvo.getText().toString().equals("0")){
                     mButs.setVisibility(View.INVISIBLE);
                     mButKorz.setVisibility(View.VISIBLE);
-                    adapter.updateValue(MyHolder.this,adapter.getValue(id) - adapter.getValue(id), id);
+                    adapter.updateValue( id,MyHolder.this,adapter.getValue(id) - adapter.getValue(id));
                 }else {
-                    adapter.updateValue(MyHolder.this,adapter.getValue(id)-1,id);
+                    adapter.updateValue(id,MyHolder.this,adapter.getValue(id)-1);
                 }
 
             }
