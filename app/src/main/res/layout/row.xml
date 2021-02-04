@@ -69,8 +69,8 @@
 
                 <LinearLayout
                     android:id="@+id/lpr"
-                    android:layout_width="63dp"
-                    android:layout_height="32dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:background="@drawable/rectangle"
                     android:gravity="center"
@@ -91,8 +91,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/titlet"
-                    android:layout_marginLeft="20dp"
                     android:layout_weight="0.5"
+                    android:layout_marginLeft="17dp"
                     android:background="@drawable/rectangle1"
                     android:gravity="center"
                     android:orientation="horizontal"
@@ -132,6 +132,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
+                    android:weightSum="3"
                     android:layout_weight="0.5"
                     android:visibility="visible">
 
@@ -155,10 +156,10 @@
 
                     <TextView
                         android:id="@+id/colichestvo"
-                        android:layout_width="wrap_content"
+                        android:layout_width="10sp"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
-                        android:layout_weight="3"
+                        android:layout_weight="2"
                         android:gravity="center"
                         android:text="0"
                         android:textColor="@color/black"

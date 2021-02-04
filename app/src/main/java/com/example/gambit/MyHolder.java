@@ -24,7 +24,6 @@ public class MyHolder extends RecyclerView.ViewHolder {
     TextView mColichestvo;
     LinearLayout mPlus,mMinus,mButKorz,mButs;
     LinearLayoutCompat rightView;
-    Boolean isFavorite;
 
     public MyHolder(@NonNull View itemView) {
         super(itemView);
@@ -52,7 +51,6 @@ public class MyHolder extends RecyclerView.ViewHolder {
         mTitle.setText(food.getDescription());
         Picasso.get().load(food.getImage()).fit().into(mImageView);
         mPrice.setText(mPrice.getContext().getString(R.string.ruble, food.getPrice()));
-        isFavorite = false;
         String id = food.getId();
 
 //            mFavorite.setChecked(adapter.getValue(food.getId()));

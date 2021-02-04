@@ -1,6 +1,7 @@
 package com.example.gambit;
 
 import android.content.SharedPreferences;
+import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,15 +16,15 @@ import ru.rambler.libs.swipe_layout.SwipeLayout;
 public class MyAdapter extends RecyclerView.Adapter<MyHolder> {
 
     ArrayList<Foods> mFoods;
-    SharedPreferences mPrefs, mePrefs;
+    SharedPreferences mPrefs ;
     Foods food = new Foods();
     private final int COUNT = 30;
     int[] itemsOffset = new int[COUNT];
 
-    public MyAdapter(SharedPreferences mPrefs, SharedPreferences mePrefs, ArrayList<Foods> foods) {
+    public MyAdapter(SharedPreferences mPrefs,  ArrayList<Foods> foods) {
         this.mFoods = foods;
         this.mPrefs = mPrefs;
-        this.mePrefs = mePrefs;
+
     }
 
     @NonNull
@@ -62,26 +63,35 @@ public class MyAdapter extends RecyclerView.Adapter<MyHolder> {
 
             @Override
             public void onRightStickyEdge(SwipeLayout swipeLayout, boolean moveToRight) {
-                moveToRight = false;
+
+                if (!viewHolder.mFavorite.isChecked()) {
+                    updateVal(food.getId(), true);
+                } else if (viewHolder.mFavorite.isChecked()) {
+                    updateVal(food.getId(), false);
+                }
+
                 if (viewHolder.swipeLayout.isRightSwipeEnabled()) {
                     if (!viewHolder.mFavorite.isChecked()) {
-                        viewHolder.mFavorite.setChecked(true);
-//                        viewHolder.mFavorite.setOnCheckedChangeListener((buttonView, isChecked) -> {
-//                            updateValue(food.getId(), isChecked);
-//                        });
-                        //updateValue(food.getId(), moveToRight);
-                        viewHolder.swipeLayout.animateReset();
+                        viewHolder.mFavorite.setChecked(getVal(food.getId()));
+                        // viewHolder.mFavorite.setChecked(mPrefs.getBoolean(food.getId(), true));
+                        new Handler().postDelayed(new Runnable() {
+                            @Override
+                            public void run() {
+                                viewHolder.swipeLayout.animateReset();
+                            }
+                        }, 400);
                     } else if (viewHolder.mFavorite.isChecked()) {
-                        viewHolder.mFavorite.setChecked(false);
-                        // updateValue(food.getId(), moveToRight);
-//                        viewHolder.mFavorite.setOnCheckedChangeListener((buttonView, isChecked) -> {
-//                            updateValue(food.getId(), isChecked);
-//                        });
-                        viewHolder.swipeLayout.animateReset();
+                        viewHolder.mFavorite.setChecked(getVal(food.getId()));
+                        //  viewHolder.mFavorite.setChecked(mPrefs.getBoolean(food.getId(), false));
+                        new Handler().postDelayed(new Runnable() {
+                            @Override
+                            public void run() {
+                                viewHolder.swipeLayout.animateReset();
+                            }
+                        }, 400);
                     }
                 }
             }
-
         });
 
         return new MyHolder(view);
@@ -91,9 +101,6 @@ public class MyAdapter extends RecyclerView.Adapter<MyHolder> {
     public void onBindViewHolder(@NonNull MyHolder holder, int position) {
         holder.bind(mFoods.get(position), MyAdapter.this);
 
-
-//        holder.mFavorite.setChecked(mFoods.get(position).isFavorite()
-//                ? R.drawable.ic_favfull : R.drawable.ic_fav);
     }
 
     @Override
@@ -128,15 +135,14 @@ public class MyAdapter extends RecyclerView.Adapter<MyHolder> {
         return mFoods.size();
     }
 
-//    public void updateVal() {
-//        //mePrefs.edit().putBoolean(id, isChecked).apply();
-//        mPrefs.edit().putBoolean(id, isChecked).apply();
-//    }
+    public void updateVal(String id, boolean isChecked) {
+        mPrefs.edit().putBoolean(id, isChecked).apply();
+    }
 
-//    public int getVal(String id) {
-////        return mePrefs.getBoolean(id, false);return mPrefs.getBoolean(id, false);
-//
-//    }
+    public boolean getVal(String id) {
+        return mPrefs.getBoolean(id, false);
+
+    }
 
 
 }

@@ -27,9 +27,6 @@ public class Foods {
         isFavorite = favorite;
     }
 
-
-
-
     public String getId() {
         return id;
     }
