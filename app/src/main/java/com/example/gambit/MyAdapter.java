@@ -30,8 +30,6 @@ public class MyAdapter extends RecyclerView.Adapter<MyHolder> {
     @NonNull
     @Override
     public MyHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        // View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.row, null);
-
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.row, parent, false);
         final MyHolder viewHolder = new MyHolder(view);
 
@@ -73,7 +71,6 @@ public class MyAdapter extends RecyclerView.Adapter<MyHolder> {
                 if (viewHolder.swipeLayout.isRightSwipeEnabled()) {
                     if (!viewHolder.mFavorite.isChecked()) {
                         viewHolder.mFavorite.setChecked(getVal(food.getId()));
-                        // viewHolder.mFavorite.setChecked(mPrefs.getBoolean(food.getId(), true));
                         new Handler().postDelayed(new Runnable() {
                             @Override
                             public void run() {
@@ -82,7 +79,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyHolder> {
                         }, 400);
                     } else if (viewHolder.mFavorite.isChecked()) {
                         viewHolder.mFavorite.setChecked(getVal(food.getId()));
-                        //  viewHolder.mFavorite.setChecked(mPrefs.getBoolean(food.getId(), false));
+
                         new Handler().postDelayed(new Runnable() {
                             @Override
                             public void run() {

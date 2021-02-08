@@ -53,11 +53,6 @@ public class MyHolder extends RecyclerView.ViewHolder {
         mPrice.setText(mPrice.getContext().getString(R.string.ruble, food.getPrice()));
         String id = food.getId();
 
-//            mFavorite.setChecked(adapter.getValue(food.getId()));
-//            mFavorite.setOnCheckedChangeListener((buttonView, isChecked) -> {
-//                adapter.updateValue(id, isChecked);
-//            });
-
 
         adapter.updateValue(id, MyHolder.this, adapter.getValue(id));
         mButKorz.setOnClickListener(new View.OnClickListener() {
