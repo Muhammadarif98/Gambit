@@ -20,9 +20,9 @@ public class MyHolder extends RecyclerView.ViewHolder {
     SwipeLayout swipeLayout;
     ImageView mImageView;
     CheckBox mFavorite;
-    TextView mTitle,mBrand,mPrice;
+    TextView mTitle, mBrand, mPrice;
     TextView mColichestvo;
-    LinearLayout mPlus,mMinus,mButKorz,mButs;
+    LinearLayout mPlus, mMinus, mButKorz, mButs;
     LinearLayoutCompat rightView;
 
     public MyHolder(@NonNull View itemView) {
@@ -45,8 +45,7 @@ public class MyHolder extends RecyclerView.ViewHolder {
     }
 
 
-
-    public void bind(Foods food,MyAdapter adapter){
+    public void bind(Foods food, MyAdapter adapter) {
         mBrand.setText(food.getName());
         mTitle.setText(food.getDescription());
         Picasso.get().load(food.getImage()).fit().into(mImageView);
@@ -58,29 +57,33 @@ public class MyHolder extends RecyclerView.ViewHolder {
         mButKorz.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mButs.setVisibility(View.VISIBLE);
-                mButKorz.setVisibility(View.INVISIBLE);
-                adapter.updateValue(id,MyHolder.this,adapter.getValue(id) + 1);
+                if (getAdapterPosition() != RecyclerView.NO_POSITION) {
+                    mButs.setVisibility(View.VISIBLE);
+                    mButKorz.setVisibility(View.INVISIBLE);
+                    adapter.updateValue(id, MyHolder.this, adapter.getValue(id) + 1);
+                }
             }
         });
         mPlus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                adapter.updateValue(id,MyHolder.this,adapter.getValue(id) + 1);
+                adapter.updateValue(id, MyHolder.this, adapter.getValue(id) + 1);
             }
         });
         mMinus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (mColichestvo.getText().toString().equals("0")){
-                    mButs.setVisibility(View.INVISIBLE);
-                    mButKorz.setVisibility(View.VISIBLE);
-                    adapter.updateValue( id,MyHolder.this,adapter.getValue(id) - adapter.getValue(id));
-                }else {
-                    adapter.updateValue(id,MyHolder.this,adapter.getValue(id)-1);
+                if (getAdapterPosition() != RecyclerView.NO_POSITION) {
+                    if (mColichestvo.getText().toString().equals("0")) {
+                        mButs.setVisibility(View.INVISIBLE);
+                        mButKorz.setVisibility(View.VISIBLE);
+                        adapter.updateValue(id, MyHolder.this, adapter.getValue(id) - adapter.getValue(id));
+                    } else {
+                        adapter.updateValue(id, MyHolder.this, adapter.getValue(id) - 1);
+                    }
                 }
 
             }
         });
-  }
+    }
 }

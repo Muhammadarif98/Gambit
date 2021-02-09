@@ -96,8 +96,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull MyHolder holder, int position) {
-        holder.bind(mFoods.get(position), MyAdapter.this);
-
+           holder.bind(mFoods.get(position), MyAdapter.this);
     }
 
     @Override
@@ -118,6 +117,9 @@ public class MyAdapter extends RecyclerView.Adapter<MyHolder> {
         if (holder.mColichestvo.getText().toString().equals("0")) {
             holder.mButKorz.setVisibility(View.VISIBLE);
             holder.mButs.setVisibility(View.INVISIBLE);
+        }else{
+            holder.mButKorz.setVisibility(View.INVISIBLE);
+            holder.mButs.setVisibility(View.VISIBLE);
         }
 
     }
